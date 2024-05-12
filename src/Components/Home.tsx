@@ -24,7 +24,7 @@ const Home = () => {
         price: 200,
         image: "https://via.placeholder.com/300",
       },
-      {
+        {
         id: 1,
         name: "Product 1",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
