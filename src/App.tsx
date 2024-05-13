@@ -6,6 +6,7 @@ import NotFound from './Components/NotFound';
 import Contact from './Components/Contact';
 import About from './Components/About';
 import AllProducts from './Components/AllProducts';
+import ProductPage from './Components/Product';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
+          {/* Route for the single product page */}
+          <Route path="/products/:id" element={<ProductPage />} />
         </Routes>
         <Footer />
       </Router>

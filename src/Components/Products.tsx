@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // Assuming ProductCard is in a separate file
 const Products = ({ products }: any) => {
   return (
@@ -11,20 +13,23 @@ const Products = ({ products }: any) => {
   );
 };
 
+
 const ProductCard = ({ product }: any) => {
-  return (
-    <div className="max-w-sm  overflow-hidden shadow-md hover:cursor-pointer">
-      <img className="w-full" src={product.image} alt={product.name} />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{product.name}</div>
-        <p className="text-gray-700 text-base overflow-hidden line-clamp-2">{product.description}</p>
-      </div>
-      <div className="px-6 py-4 flex justify-between items-center">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">PKR {product.price}</span>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
-      </div>
-    </div>
-  );
+    return (
+        <Link to={`/products/${product.id}`} className="max-w-sm overflow-hidden shadow-md hover:cursor-pointer">
+            <img className="w-full" src={product.image} alt={product.name} />
+            <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{product.name}</div>
+                <p className="text-gray-700 text-base overflow-hidden line-clamp-2">{product.description}</p>
+            </div>
+            <div className="px-6 py-4 flex justify-between items-center">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">PKR {product.price}</span>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
+            </div>
+        </Link>
+    );
 };
+
+
 
 export default Products;
