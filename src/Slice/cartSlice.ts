@@ -7,7 +7,6 @@ interface CartItem {
   price: number;
 }
 
-
 interface CartState {
   isOpen: boolean;
   items: CartItem[];
@@ -17,7 +16,6 @@ const initialState: CartState = {
   isOpen: false,
   items: [],
 };
-
 
 const cartSlice = createSlice({
   name: 'cart',

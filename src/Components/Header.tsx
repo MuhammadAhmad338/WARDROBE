@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Store/store';
+import logo from '../assets/wardrobe (1).png';
 import { toggleCart } from '../Slice/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
-import logo from '../assets/wardrobe (1).png';
 
 const Header = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.cart.isOpen);
-  const cartItems = useSelector((state: RootState) => state.cart.items);
   const handleToggleCart = () => {
     dispatch(toggleCart());
   };
@@ -43,7 +42,6 @@ const Header = () => {
       price: 150,
       image: "https://via.placeholder.com/300",
     },
-    
   ];
 
   return (
@@ -95,16 +93,12 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-
                   <button className="bg-white shadow-md text-black px-4 py-2 mt-4 w-full">Checkout</button>
-
                 </div>
               </div>
-
             )}
           </div>
         </div>
-
       </div>
     </header>
   );
