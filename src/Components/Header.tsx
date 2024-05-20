@@ -5,6 +5,8 @@ import { toggleCart } from '../Slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import Search from './Search';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,11 @@ const Header = () => {
     dispatch(toggleCart());
   };
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearch = () => {
+      setIsSearchOpen(!isSearchOpen);
+  };
   const products = [
     {
       id: 1,
@@ -102,6 +109,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {isSearchOpen && <Search />}
     </header>
   );
 };
