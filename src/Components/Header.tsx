@@ -62,7 +62,9 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <div className="relative">
+          <Link to="search">  <p>Search</p> </Link>
+          <div className="relative ml-8">
+         
             <FontAwesomeIcon icon={faShoppingCart} className="text-gray-700 cursor-pointer" onClick={handleToggleCart} />
             {isOpen && (
               <div className="fixed right-0 top-0 w-2/6 h-screen shadow-3xl bg-gray-300 bg-opacity-75 z-50 transition duration-300 ease-in-out transform translate-x-full lg:translate-x-0">
@@ -93,7 +95,7 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="bg-white shadow-md text-black px-4 py-2 mt-4 w-full">Checkout</button>
+                                    <button className="bg-white shadow-md text-black px-4 py-2 mt-4 w-full">Checkout</button>
                 </div>
               </div>
             )}

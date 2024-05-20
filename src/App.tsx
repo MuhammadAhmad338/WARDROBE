@@ -10,6 +10,8 @@ import ProductPage from './Components/Product';
 import PrivacyPolicy from './Components/PrivacyPolicy';
 import Termsofservice from './Components/Termsofservice';
 import FAQ from './Components/FAQ';
+import ShippingPolicy from './Components/ShippingPolicy';
+import Search from './Components/Search';
 
 const App = () => {
   return (
@@ -21,10 +23,12 @@ const App = () => {
           <Route path="/allProducts" element={<AllProducts />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/termsofservice" element={<Termsofservice />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/shippingpolicy" element={<ShippingPolicy />} />
           
           {/* Route for the single product page */}
           <Route path="/products/:id" element={<ProductPage />} />
