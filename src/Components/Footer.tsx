@@ -41,7 +41,7 @@ const Footer = () => {
                 </div>
                 <div className="w-full sm:w-1/2 md:w-1/4 mb-4 px-4">
                     <h3 className="text-lg font-semibold mb-2">Our Policy</h3>
-                    <Link to="/shippingpolicy">
+                    <Link to="/shippingpolicy" onClick={scrollToTop}>
                         <p>Shipping Policy</p>
                     </Link>
                     <Link to="/privacypolicy" onClick={scrollToTop}>

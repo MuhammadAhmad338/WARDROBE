@@ -28,7 +28,7 @@ const ProductPage = () => {
                 <div>
                     <h2 className="text-2xl font-semibold mb-2">Product Name</h2>
                     <p className="text-gray-600 mb-4">Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p className="text-2xl font-semibold mb-4">$99.99</p>
+                    <p className="text-2xl font-semibold mb-4">$130</p>
                 </div>
 
                 {/* Product Count */}

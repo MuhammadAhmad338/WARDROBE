@@ -17,9 +17,6 @@ const Header = () => {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const toggleSearch = () => {
-      setIsSearchOpen(!isSearchOpen);
-  };
   const products = [
     {
       id: 1,
@@ -69,7 +66,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <Link to="search">  <p>Search</p> </Link>
+         <p onClick={() => setIsSearchOpen(!isSearchOpen)}>Search</p> 
           <div className="relative ml-8">
          
             <FontAwesomeIcon icon={faShoppingCart} className="text-gray-700 cursor-pointer" onClick={handleToggleCart} />
@@ -102,14 +99,14 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-                                    <button className="bg-white shadow-md text-black px-4 py-2 mt-4 w-full">Checkout</button>
+                <button className="bg-white shadow-md text-black px-4 py-2 mt-4 w-full">Checkout</button>
                 </div>
               </div>
             )}
           </div>
         </div>
       </div>
-      {isSearchOpen && <Search />}
+      {isSearchOpen && <Search isOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />}
     </header>
   );
 };
