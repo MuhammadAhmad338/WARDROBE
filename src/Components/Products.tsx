@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../Store/store.ts";
-import {addItem} from "../Slice/cartSlice.ts";
+import {addToCart} from "../Slice/cartSlice.ts";
+
 // Assuming ProductCard is in a separate file
 interface ProductProps {
     id: number;
@@ -33,10 +34,11 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
     const dispatch : AppDispatch = useDispatch();
 
     const handleAddToCart = () => {
-        dispatch(addItem({ id, name, price, quantity, image, description}));
+        dispatch(addToCart({ id, name, price, quantity, image, description}));
     };
 
     return (
+       <div className="border-2 border-black">
         <Link to={`/products/${id}`} className="max-w-sm overflow-hidden shadow-md hover:cursor-pointer">
             <img className="w-full" src={image} alt={name} />
             <div className="px-6 py-4">
@@ -50,6 +52,7 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
                 >Add to Cart</button>
             </div>
         </Link>
+    </div>
     );
 };
 

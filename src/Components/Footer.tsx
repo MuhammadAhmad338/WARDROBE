@@ -11,7 +11,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-orange-200 text-gray-800 py-8 shadow-lg">
+        <footer className="bg-amber-50 text-gray-800 py-8 shadow-lg">
             <div className="container mx-auto flex flex-wrap justify-between ml-8 items-center h-full">
                 <div className="w-full sm:w-1/4 mb-4 px-4 ml-12">
                     <h3 className="text-lg font-semibold mb-4 mr-4">Follow Us</h3>
