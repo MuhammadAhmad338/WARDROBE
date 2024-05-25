@@ -12,7 +12,6 @@ interface ProductProps {
     quantity: number;
 }
 
-
 const Products = ({ products }: any) => {
   return (
     <div className="flex flex-wrap justify-between">
