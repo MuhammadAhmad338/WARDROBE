@@ -11,42 +11,12 @@ import Search from './Search';
 const Header = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.cart.isOpen);
+  const  cartItems = useSelector((state: RootState) => state.cart.items );
   const handleToggleCart = () => {
     dispatch(toggleCart());
   };
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-
-  const products = [
-    {
-      id: 1,
-      name: "Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      price: 100,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      price: 150,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 1,
-      name: "Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      price: 100,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      price: 150,
-      image: "https://via.placeholder.com/300",
-    },
-  ];
 
   return (
     <header className="bg-white shadow-lg">
@@ -86,14 +56,14 @@ const Header = () => {
                   {/* Scrollable list of cart items */}
                   <ul className="overflow-y-auto">
                     {/* Map over products array */}
-                    {products.map(product => (
-                      <li key={product.id} className="flex justify-between items-center py-4">
+                    {cartItems.map(cartItem => (
+                      <li key={cartItem.id} className="flex justify-between items-center py-4">
                         <div className="flex items-center">
-                          <img src={product.image} alt={product.name} className="w-16 h-16 rounded-full mr-4" />
+                          <img src={cartItem.image} alt={cartItem.name} className="w-16 h-16 rounded-full mr-4" />
                           <div>
-                            <h3 className="text-lg font-semibold">{product.name}</h3>
-                            <p className="text-black-500">{product.description}</p>
-                            <p className="text-black-700">${product.price}</p>
+                            <h3 className="text-lg font-semibold">{cartItem.name}</h3>
+                            <p className="text-black-500">{cartItem.description}</p>
+                            <p className="text-black-700 font-bold">${cartItem.price}</p>
                           </div>
                         </div>
                       </li>
