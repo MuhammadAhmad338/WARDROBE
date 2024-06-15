@@ -39,34 +39,6 @@ const AllProducts = () => {
             price: 150,
             image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fsmoke-square-resized.jpg?alt=media&token=217cef84-9841-413d-81e8-c167642530fd",
         },
-        {
-            id: 6,
-            name: "Product 6",
-            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            price: 200,
-            image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fstayactive.jpg?alt=media&token=b6d1b473-f09c-4e34-9469-b23adf034f1c",
-        },
-        {
-            id: 7,
-            name: "Product 7",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            price: 100,
-            image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fhealthyweight.jpg?alt=media&token=c24c37e7-0ab0-48cb-ba18-076cc18dd37c",
-        },
-        {
-            id: 8,
-            name: "Product 8",
-            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            price: 200,
-            image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fhealthyweight.jpg?alt=media&token=c24c37e7-0ab0-48cb-ba18-076cc18dd37c",
-        },
-        {
-            id: 9,
-            name: "Product 9",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            price: 100,
-            image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fhealthyweight.jpg?alt=media&token=c24c37e7-0ab0-48cb-ba18-076cc18dd37c",
-        },
     ];
 
     return (

@@ -1,8 +1,8 @@
 import Products from './Products';
 
 const Home = () => {
-  
-  const products = [
+   
+    const products = [
     {
         id: 1,
         name: "Product 1",

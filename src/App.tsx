@@ -11,6 +11,7 @@ import Termsofservice from './Components/Termsofservice';
 import ShippingPolicy from './Components/ShippingPolicy';
 import Home from "./Components/Home";
 import FAQ from './Components/FAQ';
+import StockItemsList from './Components/stockItemList';
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/allProducts" element={<AllProducts />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/stock" element={<StockItemsList />} />
+          
   
           <Route path="*" element={<NotFound />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
