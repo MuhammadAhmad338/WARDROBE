@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../Store/store.ts";
-import {addToCart} from "../../Slice/cartSlice.ts";
 
 // Assuming ProductCard is in a separate file
 interface ProductProps {
@@ -30,13 +27,7 @@ const Products = ({ products }: any) => {
   );
 };
 
-const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, image, quantity })  => {
-    const dispatch : AppDispatch = useDispatch();
-
-    const handleAddToCart = () => {
-        dispatch(addToCart({ id, name, price, quantity, image, description}));
-    };
-
+const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, image })  => {
 
   return (
     <Link to={`/products/${id}`} >

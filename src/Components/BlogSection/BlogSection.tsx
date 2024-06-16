@@ -1,7 +1,3 @@
-// src/components/BlogSection.js
-
-import React from 'react';
-
 const BlogSection = () => {
   // Sample data for demonstration
   const blogs = [
