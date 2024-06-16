@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchStockItems } from '../Slice/stockSlice';
-import { AppDispatch, RootState } from '../Store/store';
+import { fetchStockItems } from '../../Slice/stockSlice';
+import { AppDispatch, RootState } from '../../Store/store';
 
 const StockItemsList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

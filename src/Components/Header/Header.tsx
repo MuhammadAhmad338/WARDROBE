@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { RootState } from '../Store/store';
-import logo from '../assets/wardrobe (1).png';
-import { toggleCart } from '../Slice/cartSlice';
+import { RootState } from '../../Store/store';
+import logo from '../../assets/wardrobe (1).png';
+import { toggleCart } from '../../Slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import Search from './Search';
+import Search from '../Search/Search';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Header = () => {
 
   // @ts-ignore
   return (
-    <header className="bg-white shadow-lg">
+    <header className="bg-peach-lightest shadow-lg">
     <div className="container mx-auto px-4 py-6 flex justify-between items-center">
       <Link to="/" className="flex items-center">
         <img src={logo} alt="Logo" className="h-8 w-auto mr-2" />

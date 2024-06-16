@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Products from './Products';
-import '../index.css';
+import Products from '../Products/Products';
+import '../../index.css';
 
 const Home = () => {
    

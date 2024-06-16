@@ -9,7 +9,11 @@ export default {
     extend: {
       fontFamily: {
         body: ["Montserrat"]
-      }
+      },
+      colors: {
+        'peach': '#FFDAB9', // Adjust the hex code to match your desired peach shade,
+        'peach-lightest': '#FFF4E5', // Adjusted to a lighter shade of peach
+      },
     },
   },
   plugins: [],

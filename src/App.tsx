@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import NotFound from './Components/NotFound';
-import Contact from './Components/Contact';
-import About from './Components/About';
-import AllProducts from './Components/AllProducts';
-import ProductPage from './Components/Product';
-import PrivacyPolicy from './Components/PrivacyPolicy';
-import Termsofservice from './Components/Termsofservice';
-import ShippingPolicy from './Components/ShippingPolicy';
-import Home from "./Components/Home";
-import FAQ from './Components/FAQ';
-import StockItemsList from './Components/stockItemList';
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
+import NotFound from './Components/NotFound/NotFound';
+import Contact from './Components/Contact/Contact';
+import About from './Components/About/About';
+import AllProducts from './Components/AllProducts/AllProducts';
+import ProductPage from './Components/Product/Product';
+import PrivacyPolicy from './Components/Privacypolicy/PrivacyPolicy';
+import Termsofservice from './Components/Termsofservice/Termsofservice';
+import ShippingPolicy from './Components/ShippingPolicy/ShippingPolicy';
+import Home from "./Components/Home/Home";
+import FAQ from './Components/FAQ/FAQ';
+import StockItemsList from './Components/StockItemList/stockItemList';
 
 const App = () => {
   return (
