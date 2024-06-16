@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Products from '../Products/Products';
+import BlogSection from '../BlogSection/BlogSection';
 import '../../index.css';
 
 const Home = () => {
@@ -47,6 +48,9 @@ const Home = () => {
     'src/assets/pexels-muffin-2205839.jpg',
     'src/assets/pexels-david-bartus-43782-297933.jpg'
   ];
+
+  
+
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState('');
@@ -66,23 +70,28 @@ const Home = () => {
 
   return (
     <div>
-    <div className="w-full min-h-screen bg-gray-100 flex items-center justify-center relative">
-      <img
-        src={images[currentImageIndex]}
-        alt="Shop Now"
-        className={`w-full h-full object-cover ${fadeClass}`}
-      />
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <p className="text-sm  text-white mb-4">W A R D R O B E</p>
-        <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-black hover:text-white">
-          SHOP NOW
-        </button>
+      <div className="w-full min-h-screen bg-gray-100 flex items-center justify-center relative">
+        <img
+          src={images[currentImageIndex]}
+          alt="Shop Now"
+          className={`w-full h-full object-cover ${fadeClass} md:object-contain`}
+          style={{ minHeight: '100vh' }}
+        />
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <p className="text-sm text-white mb-4">W A R D R O B E</p>
+          <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-black hover:text-white">
+            SHOP NOW
+          </button>
+        </div>
       </div>
+
+      <div className="container mx-auto py-8">
+        <Products products={products} />
+      </div>
+
+      <BlogSection />
     </div>
-    <div className="container mx-auto py-8">
-       <Products products={products} /> 
-    </div>
-  </div>
   );
 }
 
