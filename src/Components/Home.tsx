@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import Products from './Products';
+import '../index.css';
 
 const Home = () => {
    
@@ -39,11 +41,49 @@ const Home = () => {
         image: "https://firebasestorage.googleapis.com/v0/b/wellnow-3b505.appspot.com/o/medical_tips%2Fsmoke-square-resized.jpg?alt=media&token=217cef84-9841-413d-81e8-c167642530fd",
     },
   ];
+
+  const images = [
+    'https://images.unsplash.com/photo-1552650272-b8a34e21bc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHNoaXJ0fGVufDB8fHx8MTYxODUyNjU4Ng&ixlib=rb-1.2.1&q=80&w=1080',
+    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?fit=crop&w=1920&q=80',
+    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?fit=crop&w=1920&q=80'
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [fadeClass, setFadeClass] = useState('');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFadeClass(''); // Reset the fade class
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change image every 5 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
+
+  useEffect(() => {
+    setFadeClass('fade-in'); // Apply the fade class when image changes
+  }, [currentImageIndex]);
+
   return (
-    <div className="container mx-auto px-4 py-8">
-          <Products products={products}/>        
+    <div>
+    <div className="w-full min-h-screen bg-gray-100 flex items-center justify-center relative">
+      <img
+        src={images[currentImageIndex]}
+        alt="Shop Now"
+        className={`w-full h-full object-cover ${fadeClass}`}
+      />
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <p className="text-sm  text-white mb-4">W A R D R O B E</p>
+        <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-black hover:text-white">
+          SHOP NOW
+        </button>
       </div>
-  )
+    </div>
+    <div className="container mx-auto py-8">
+       <Products products={products} /> 
+    </div>
+  </div>
+  );
 }
 
 export default Home;
