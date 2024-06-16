@@ -43,9 +43,9 @@ const Home = () => {
   ];
 
   const images = [
-    'https://images.unsplash.com/photo-1552650272-b8a34e21bc4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHNoaXJ0fGVufDB8fHx8MTYxODUyNjU4Ng&ixlib=rb-1.2.1&q=80&w=1080',
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?fit=crop&w=1920&q=80'
+    'src/assets/pexels-pixabay-264726.jpg',
+    'src/assets/pexels-muffin-2205839.jpg',
+    'src/assets/pexels-david-bartus-43782-297933.jpg'
   ];
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
