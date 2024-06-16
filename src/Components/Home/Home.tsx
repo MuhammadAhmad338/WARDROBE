@@ -80,7 +80,7 @@ const Home = () => {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <p className="text-sm text-white mb-4">W A R D R O B E</p>
-          <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-black hover:text-white">
+          <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
             SHOP NOW
           </button>
         </div>
@@ -91,6 +91,12 @@ const Home = () => {
       </div>
 
       <BlogSection />
+
+      <div className="flex justify-center mt-4 mb-4">
+  <button className="px-6 py-3 text-sm text-black bg-peach-lightest  md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
+    VIEW ALL ARTICLES
+  </button>
+</div>
     </div>
   );
 }

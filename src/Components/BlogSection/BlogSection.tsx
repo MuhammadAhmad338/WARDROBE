@@ -14,7 +14,7 @@ const BlogSection = () => {
     <section className="text-gray-600 body-font">
     <div className="container px-5 py-24 mx-auto">
       {/* Centered heading */}
-      <h1 className="text-3xl text-center font-bold mb-8">Latest Blog Posts</h1>
+      <h1 className="text-2xl text-center  mb-8">Latest Blog Posts</h1>
   
       <div className="flex flex-wrap -m-4">
         {blogs.map(blog => (
