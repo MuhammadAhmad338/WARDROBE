@@ -21,7 +21,7 @@ const Header = () => {
   // @ts-ignore
   return (
     <header className="bg-peach-lightest shadow-lg">
-    <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+    <div className="container mx-auto px-4 py-3.5 flex justify-between items-center">
       <Link to="/" className="flex items-center">
         <img src={logo} alt="Logo" className="h-8 w-auto mr-2" />
       </Link>
