@@ -28,11 +28,12 @@ const Header = () => {
 
       <nav className="hidden md:flex flex-grow justify-center items-center space-x-4">
       <p>
-    <a href="/" className="text-sm text-gray-700 hover:text-gray-900">HOME</a>
-    <a href="/allProducts" className="ml-4 text-sm text-gray-700 hover:text-gray-900 hover:underline">ALL PRODUCTS</a>
-    <a href="/about" className="ml-4 text-sm text-gray-900 hover:text-gray-900 hover:underline">ABOUT US</a>
-    <a href="/contact" className="ml-4 text-sm text-gray-900 hover:text-gray-900 hover:underline">CONTACT US</a>
-</p>
+      <a href="/" className="text-sm text-gray-700 hover:text-gray-900">HOME</a>
+      <a href="/allProducts" className="ml-6 text-sm text-gray-700 hover:text-gray-900 hover:underline">ALL PRODUCTS</a>
+      <a href="/about" className="ml-6 text-sm text-gray-900 hover:text-gray-900 hover:underline">ABOUT US</a>
+      <a href="/newarticles" className="ml-6 text-sm text-gray-900 hover:text-gray-900 hover:underline">NEW ARTICLES</a>
+      <a href="/contact" className="ml-6 text-sm text-gray-900 hover:text-gray-900 hover:underline">CONTACT US</a>
+      </p>
       </nav>
 
       <div className="flex items-center">

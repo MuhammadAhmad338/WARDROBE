@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Products from '../Products/Products';
 import BlogSection from '../BlogSection/BlogSection';
 import '../../index.css';
+import ImageOverlay from '../ImageOverlay/ImageOverlay';
 
 const Home = () => {
    
@@ -49,9 +50,6 @@ const Home = () => {
     'src/assets/pexels-david-bartus-43782-297933.jpg'
   ];
 
-  
-
-  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState('');
 
@@ -77,7 +75,6 @@ const Home = () => {
           className={`w-full h-full object-cover ${fadeClass} md:object-contain`}
           style={{ minHeight: '100vh' }}
         />
-
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <p className="text-sm text-white mb-4">W A R D R O B E</p>
           <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
@@ -85,18 +82,33 @@ const Home = () => {
           </button>
         </div>
       </div>
-
       <div className="container mx-auto py-8">
         <Products products={products} />
       </div>
-
       <BlogSection />
-
       <div className="flex justify-center mt-4 mb-4">
-  <button className="px-6 py-3 text-sm text-black bg-peach-lightest  md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
-    VIEW ALL ARTICLES
-  </button>
-</div>
+      <button className="px-6 py-3 text-sm text-black bg-peach-lightest  md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
+        VIEW ALL ARTICLES
+     </button>
+     
+    </div>
+    <ImageOverlay
+        imageUrl="https://via.placeholder.com/800x600"
+        overlayContent={
+          <div className="bg-black bg-opacity-75 p-6 rounded text-center">
+            <p className="text-1xl mb-2">TRENDING CLOTHING</p>
+            <p className="text-md mb-4">
+              Show off your personality with meaningful, eco-conscious expandable handmade bags,
+            </p>
+            <p className="text-md mb-4">
+              that empower the light within you.
+            </p>
+            <button className="text-white-500 hover:underline focus:outline-none">
+              SHOP NOW
+            </button>
+          </div>
+        }
+      />
     </div>
   );
 }
