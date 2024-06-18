@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import QuickViewWidget from "../../Widgets/quickViewWidget";
 
 // Assuming ProductCard is in a separate file
 interface ProductProps {
@@ -29,13 +31,19 @@ const Products = ({ products }: any) => {
 
 const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, image })  => {
 
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+
+  const handleQuickViewToggle = () => {
+    setIsQuickViewOpen(!isQuickViewOpen);
+  };
   return (
-    <Link to={`/products/${id}`} >
+    <>
+     
     <div className="max-w rounded overflow-hidden shadow-lg bg-white">
       <div className="relative">
         <img className="w-full h-64 object-cover" src={image} alt={name} />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-300">
-          <button className="text-white text-sm font-semibold bg-gray-800 rounded-full px-4 py-2 hover:bg-gray-600 transition duration-300">
+          <button onClick={handleQuickViewToggle} className="text-white text-sm font-semibold bg-gray-800 rounded-full px-4 py-2 hover:bg-gray-600 transition duration-300">
             Quick View
           </button>
         </div>
@@ -53,7 +61,19 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
         </button>
       </div>
     </div>
-    </Link>
+  
+    {/* Quick View Modal */}
+    {isQuickViewOpen && (
+       <QuickViewWidget
+       name={name}
+       image={image}
+       description={description}
+       price={price}
+       handleQuickViewToggle={handleQuickViewToggle}
+     />
+      )}
+    </>
+   
   );
 };
 

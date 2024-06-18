@@ -68,20 +68,22 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full min-h-screen bg-gray-100 flex items-center justify-center relative">
-        <img
-          src={images[currentImageIndex]}
-          alt="Shop Now"
-          className={`w-full h-full object-cover ${fadeClass} md:object-contain`}
-          style={{ minHeight: '100vh' }}
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <p className="text-sm text-white mb-4">W A R D R O B E</p>
-          <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3  transform hover:scale-105 hover:bg-black hover:text-white">
-            SHOP NOW
-          </button>
-        </div>
-      </div>
+  <div className="w-full h-[80vh] bg-gray-100 relative">
+  <img
+    src={images[currentImageIndex]}
+    alt="Shop Now"
+    className="w-full h-full object-cover"
+    style={{ minHeight: '80vh' }}
+  />
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+    <p className="text-sm text-white mb-4">W A R D R O B E</p>
+    <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transform hover:scale-105 hover:bg-black hover:text-white">
+      SHOP NOW
+    </button>
+  </div>
+</div>
+
+
       <div className="container mx-auto py-8">
         <Products products={products} />
       </div>
