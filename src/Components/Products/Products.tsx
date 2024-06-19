@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
   return (
     <>
      
-    <div className="max-w rounded overflow-hidden shadow-lg bg-white">
+    <div className="max-w overflow-hidden shadow-lg bg-white">
       <div className="relative">
         <img className="w-full h-64 object-cover" src={image} alt={name} />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-300">

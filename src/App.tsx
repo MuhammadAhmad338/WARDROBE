@@ -12,30 +12,81 @@ import ShippingPolicy from './Components/ShippingPolicy/ShippingPolicy';
 import Home from "./Components/Home/Home";
 import FAQ from './Components/FAQ/FAQ';
 import StockItemsList from './Components/StockItemList/stockItemList';
+import Checkout from './Components/Checkout/checkout';
 
 const App = () => {
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/allProducts" element={<AllProducts />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/stock" element={<StockItemsList />} />
-  
-          <Route path="*" element={<NotFound />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/termsofservice" element={<Termsofservice />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/shippingpolicy" element={<ShippingPolicy />} />
-
-          {/* Route for the single product page */}
-          <Route path="/products/:id" element={<ProductPage />} />
-        </Routes>
-        <Footer />
-      </Router>
+    <Router>
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <>
+          <Header />
+          <Home />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/allProducts"
+      element={
+        <>
+          <Header />
+          <AllProducts />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/contact"
+      element={
+        <>
+          <Header />
+          <Contact />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/about"
+      element={
+        <>
+          <Header />
+          <About />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/stock"
+      element={
+        <>
+          <Header />
+          <StockItemsList />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/products/:id"
+      element={
+        <>
+          <Header />
+          <ProductPage />
+          <Footer />
+        </>
+      }
+    />
+    <Route path="/checkouts" element={<Checkout />} />
+    <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+    <Route path="/termsofservice" element={<Termsofservice />} />
+    <Route path="/faq" element={<FAQ />} />
+    <Route path="/shippingpolicy" element={<ShippingPolicy />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+</Router>;
     </>
   );
 };

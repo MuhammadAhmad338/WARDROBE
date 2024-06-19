@@ -80,9 +80,12 @@ const Home = () => {
     <button className="px-6 py-3 text-sm text-black bg-white shadow-lg md:text-md md:px-8 md:py-3 transform hover:scale-105 hover:bg-black hover:text-white">
       SHOP NOW
     </button>
-  </div>
+  </div> 
 </div>
 
+    <div className='flex justify-center items-center mt-5 '>
+       <p className='text-sm'>Free standard shipping over 10000 Rs</p>
+    </div>
 
       <div className="container mx-auto py-8">
         <Products products={products} />
