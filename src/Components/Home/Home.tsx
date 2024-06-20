@@ -64,7 +64,7 @@ const Home = () => {
 
   return (
     <div>
-  <div className="w-full h-[80vh] bg-gray-100 relative">
+  <div className="w-full h-[80vh] bg-white relative">
   <img
     src={images[currentImageIndex]}
     alt="Shop Now"

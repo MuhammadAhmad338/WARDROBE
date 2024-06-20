@@ -18,7 +18,11 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [items, setItems] = useState([
     { id: 1, title: "Product 1", price: 19.99, quantity: 2, image: "https://via.placeholder.com/150" },
-    { id: 2, title: "Product 2", price: 24.99, quantity: 1, image: "https://via.placeholder.com/150" }
+    { id: 2, title: "Product 2", price: 24.99, quantity: 1, image: "https://via.placeholder.com/150" },
+    { id: 3, title: "Product 1", price: 19.99, quantity: 2, image: "https://via.placeholder.com/150" },
+    { id: 4, title: "Product 2", price: 24.99, quantity: 1, image: "https://via.placeholder.com/150" },
+    { id: 5, title: "Product 1", price: 19.99, quantity: 2, image: "https://via.placeholder.com/150" },
+    { id: 6, title: "Product 2", price: 24.99, quantity: 1, image: "https://via.placeholder.com/150" }
   ]);
 
   const toggleDrawer = () => {
@@ -119,59 +123,65 @@ const Header = () => {
               </div>
           )}
 
-          <Link to="/cart" className="text-black text-sm hover:text-gray-500">Cart</Link>
+          <div onClick={toggleCart} className="text-black text-sm hover:text-gray-500">Cart</div>
         </header>
-
-
-        {/* Center: Logo */}
-
-        {/* Center: Logo */}
-
-
+        
         {/* Cart */}
         {isCartOpen && (
-            <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
-              <div className="absolute top-0 right-0 h-full w-4/5 sm:w-80 lg:w-60 bg-white shadow-lg rounded-lg">
-                <div className="p-4 flex flex-col h-full">
-                  <h2 className="text-lg font-semibold">Shopping Cart</h2>
-                  <div className="overflow-y-auto flex-1">
-                    {items.map(item => (
-                        <div key={item.id} className="flex items-center space-x-4 mt-4">
-                          <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded"/>
-                          <div className="flex-1">
-                            <h3 className="text-sm font-medium">{item.title}</h3>
-                            <p className="text-gray-600">${item.price.toFixed(2)}</p>
-                            <div className="flex items-center mt-1">
-                              <button onClick={() => decreaseQuantity(item.id)}
-                                      className="text-gray-500 hover:text-gray-700 px-2">
-                                -
-                              </button>
-                              <span className="px-2">{item.quantity}</span>
-                              <button onClick={() => increaseQuantity(item.id)}
-                                      className="text-gray-500 hover:text-gray-700 px-2">
-                                +
-                              </button>
-                            </div>
-                          </div>
-                          <button onClick={() => removeItem(item.id)} className="text-gray-500 hover:text-gray-700">
-                            Remove
-                          </button>
-                        </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex justify-between items-center">
-                    <p className="text-xl font-semibold">Total:</p>
-                    <p className="text-xl">${totalPrice.toFixed(2)}</p>
-                  </div>
-                  <button
-                      className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow-sm">Proceed
-                    to Checkout
+  <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
+    <div className="absolute top-0 right-0 h-full w-4/5 sm:w-80 lg:w-1/3 xl:w-1/4 bg-white shadow-lg rounded-lg">
+      <div className="p-4 flex flex-col h-full">
+        <div className='flex justify-between items-center mb-4'>
+          <h2 className="text-lg font-semibold">Shopping Cart</h2>
+          <button className="text-gray-800" onClick={toggleCart}>Close</button>
+        </div>
+        <div className="overflow-y-auto flex-1">
+          {items.map(item => (
+            <div key={item.id} className="flex items-center space-x-4 mt-4">
+              <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded"/>
+              <div className="flex-1">
+                <h3 className="text-sm font-medium">{item.title}</h3>
+                <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                <div className="flex items-center mt-1">
+                  <button onClick={() => decreaseQuantity(item.id)}
+                          className="text-gray-500 hover:text-gray-700 px-2">
+                    -
                   </button>
-                  <button className="text-gray-800 mt-4" onClick={toggleCart}>Close</button>
+                  <span className="px-2">{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.id)}
+                          className="text-gray-500 hover:text-gray-700 px-2">
+                    +
+                  </button>
                 </div>
               </div>
+              <button onClick={() => removeItem(item.id)} className="text-gray-500 hover:text-gray-700">
+                Remove
+              </button>
             </div>
-        )}
+          ))}
+        </div>
+        <div className="mt-6 flex justify-between items-center">
+          <p className="text-xl font-semibold">SubTotal:</p>
+          <p className="text-xl">${totalPrice.toFixed(2)}</p>
+        </div>
+
+        <button className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 shadow-sm">
+          Proceed to Checkout
+        </button>
+       
+        <Link to={"/cart"}>
+        <button  className="mt-6 w-full bg-black border border-black text-white py-2 px-4 hover:bg-white hover:text-black hover:border-black">
+          View Cart
+       </button>
+       </Link>
+        
+
+        
+      </div>
+    </div>
+  </div>
+)}
+
 
 
         {/* Search */}

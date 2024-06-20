@@ -13,6 +13,7 @@ import Home from "./Components/Home/Home";
 import FAQ from './Components/FAQ/FAQ';
 import StockItemsList from './Components/StockItemList/stockItemList';
 import Checkout from './Components/Checkout/checkout';
+import Cart from './Components/Cart/Cart';
 
 const App = () => {
   return (
@@ -55,6 +56,16 @@ const App = () => {
         <>
           <Header />
           <About />
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/cart"
+      element={
+        <>
+          <Header />
+          <Cart />
           <Footer />
         </>
       }
