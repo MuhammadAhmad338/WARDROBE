@@ -1,53 +1,161 @@
-import { useState } from 'react';
+import { useState } from "react";
+import Dropdown from "../../Widgets/dropdownWidget";
 
-const ProductPage = () => {
-    // State for product count
-    const [count, setCount] = useState(1);
+const ProductCard = () => {
+  const [selectedSize, setSelectedSize] = useState("S"); // Default size is 'S'
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    "https://via.placeholder.com/800x800",
+    "https://via.placeholder.com/800x801",
+    "https://via.placeholder.com/800x802",
+    "https://via.placeholder.com/800x803",
+  ];
 
-    // Function to increase count
-    const increaseCount = () => {
-        setCount(prevCount => prevCount + 1);
-    };
+  const navigateImage = (direction: "prev" | "next") => {
+    if (direction === "prev") {
+      setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    } else {
+      setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }
+  };
+  // Function to handle size selection
+  const handleSizeClick = (size: string) => {
+    setSelectedSize(size);
+  };
 
-    // Function to decrease count
-    const decreaseCount = () => {
-        if (count > 1) {
-            setCount(prevCount => prevCount - 1);
-        }
-    };
-
-    return (
-        <div className="container mx-auto px-4 py-6 flex">
-            {/* Product Picture */}
-            <div className="w-1/2 flex-grow flex-shrink">
-                <img src="https://via.placeholder.com/300" alt="Product" className="w-3/4 h-auto" />
-            </div>
-
-            {/* Product Details */}
-            <div className="w-1/2 pl-6 flex flex-col justify-between">
-                <div>
-                    <h2 className="text-2xl font-semibold mb-2">Product Name</h2>
-                    <p className="text-gray-600 mb-4">Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p className="text-2xl font-semibold mb-4">$130</p>
-                </div>
-
-                {/* Product Count */}
-                <div className="flex items-center mb-4">
-                    <button className="bg-gray-300 text-gray-700 px-4 py-2" onClick={decreaseCount}>-</button>
-                    <span className="bg-gray-100 text-gray-700 px-4 py-2">{count}</span>
-                    <button className="bg-gray-300 text-gray-700 px-4 py-2" onClick={increaseCount}>+</button>
-                </div>
-
-                {/* Add to Cart button */}
-                <button className="bg-gray-800 text-white px-2 py-2 mb-2 w-full">Add to Cart</button>
-
-                {/* Buy Now button */}
-                <button className="bg-blue-500 text-white px-2 py-2 w-full">Buy Now</button>
-            </div>
+  return (
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
+      {/* Image on the left */}
+      <div className="relative w-2/3">
+        <img
+          src={images[currentImage]} // Larger image size
+          alt="Green Swim Shorts"
+          className="w-full h-auto object-cover rounded-lg"
+          style={{ minHeight: "400px" }} // Ensures minimum height for consistency
+        />
+        <div
+          onClick={() => navigateImage("prev")}
+          className="absolute top-1/2 left-4 transform 
+  -translate-y-1/2 bg-black rounded-full p-2 cursor-pointer shadow-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
         </div>
+        <div
+          onClick={() => navigateImage("next")}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black
+   rounded-full p-2 cursor-pointer shadow-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
 
-    );
+      {/* Product details on the right */}
+      <div className="w-2/3 p-4">
+        <h1 className="text-2xl font-bold mb-2">
+          THRST Classic Hue Swim Shorts
+        </h1>
+        <p className="text-xl font-semibold mb-4">$49.99</p>
+        <p className="text-gray-600 text-sm mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+          cursus blandit magna, a vulputate arcu imperdiet id.
+        </p>
+
+        <div className="mb-4">
+          <label className="flex justify-between items-center text-sm font-medium text-gray-700 w-full">
+            <div>
+              Size: <span className="text-sm">{selectedSize}</span>
+            </div>
+            <span className="text-sm text-blue-500 cursor-pointer">
+              Size Guide
+            </span>
+          </label>
+
+          <div className="flex mt-3 space-x-4 ">
+            {["S", "M", "L", "XL"].map((size) => (
+              <>
+                <div
+                  key={size}
+                  onClick={() => handleSizeClick(size)}
+                  className={`  px-3 py-1 border-2 cursor-pointer transition-colors ${
+                    selectedSize === size
+                      ? "bg-black text-white border-black"
+                      : "bg-white text-black border-gray-300"
+                  } hover:bg-black hover:text-white`}
+                >
+                  <span className="text-lg">{size}</span>
+                </div>
+              </>
+            ))}
+          </div>
+
+          <button className="bg-white w-full border-2 border-black text-black px-3 py-2 mt-5 hover:bg-black hover:text-white transition-colors duration-300">
+            Add to Cart
+          </button>
+          <div className="p-4">
+            <Dropdown title="PRODUCT INFORMATION">
+              <p className="mb-4">
+                The THRST Classic Hue Swim Shorts are constructed from a
+                light-weight water resistant material that makes them both
+                practical and on point in terms of style. The fit runs slightly
+                longer through the outer leg for a comfortable look and feel.
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+                <li>Super quick-dry mesh lining</li>
+                <li>Side pockets and back pocket with zip</li>
+                <li>Elasticated adjustable waistband</li>
+                <li>90% Polyester 10% elastane</li>
+                <li>Model wears a size medium</li>
+              </ul>
+            </Dropdown>
+            <Dropdown title="SIZE AND INFO">
+              <p>
+                Classic shorts run slightly longer through the outer leg and fit
+                true to size at the waist. Mike wears a size medium.
+              </p>
+            </Dropdown>
+            <Dropdown title="DELIVERY AND RETURNS">
+              <p>
+                FREE SHIPPING*: <br />
+                UK: Over £70 <br />
+                US: Over $100 <br />
+                AUSTRALIA: Over $100 <br />
+                CANADA: Over 170 CAD <br />
+                EUROPE* (Germany, Netherlands, Sweden, Spain, France, Denmark,
+                Ireland, Switzerland, Norway, Portugal, Italy, Belgium, Greece,
+                Austria): Over €100
+              </p>
+            </Dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default ProductPage;
-
+export default ProductCard;

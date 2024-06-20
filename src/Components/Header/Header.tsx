@@ -1,25 +1,59 @@
 import { RootState } from '../../Store/store';
-import { toggleCart } from '../../Slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import Upperheader from './UpperHeaders/upperheader';
 import Uppertolowerheader from './UpperHeaders/uppertolowerheader';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.cart.isOpen);
-  const  cartItems = useSelector((state: RootState) => state.cart.items);
-  const handleToggleCart = () => {
-    dispatch(toggleCart());
-  };
+  const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [items, setItems] = useState([
+    { id: 1, title: "Product 1", price: 19.99, quantity: 2, image: "https://via.placeholder.com/150" },
+    { id: 2, title: "Product 2", price: 24.99, quantity: 1, image: "https://via.placeholder.com/150" }
+  ]);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const increaseQuantity = (id: any) => {
+    const updatedItems = items.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setItems(updatedItems);
+  };
+
+  const decreaseQuantity = (id: any) => {
+    const updatedItems = items.map(item =>
+      item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    );
+    setItems(updatedItems);
+  };
+
+  const removeItem = (id: any) => {
+    const updatedItems = items.filter(item => item.id !== id);
+    setItems(updatedItems);
+  };
 
 
+  
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const controlHeader = () => {
     if (typeof window !== 'undefined') {
       if (window.scrollY > lastScrollY) { // If scrolling down
@@ -34,78 +68,128 @@ const Header = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', controlHeader);
-
-      // Cleanup function
       return () => {
         window.removeEventListener('scroll', controlHeader);
       };
     }
   }, [lastScrollY]);
-  // @ts-ignore
-  return (  
-   <>
-  <Upperheader />
-<Uppertolowerheader />
-<header className={`flex py-4 px-4 bg-amber-50 transition-transform duration-300`}>
-  {/* Left-aligned navigation */}
-  <nav className="flex items-center space-x-4">
-    <a href="/" className="text-gray-700 hover:text-gray-900 text-sm">Home</a>
-    <a href="/allProducts" className="text-gray-700 hover:text-gray-900 text-sm">All Products</a>
-    <a href="/about" className="text-gray-900 hover:text-gray-900 text-sm">About us</a>
-    <a href="/newarticles" className="text-gray-900 hover:text-gray-900 text-sm">New articles</a>
-    <a href="/contact" className="text-gray-900 hover:text-gray-900 text-sm">Contact us</a>
-  </nav>
-  
-  {/* Margin-left logo */}
-  <div className="ml-56  ">
-    <img src="src/assets/wardrobe (1).png" alt="Logo" className="h-7 w-auto" />
-  </div>
 
-  {/* Right-aligned elements (search and cart) */}
-  <div className="flex items-center flex-grow justify-end space-x-4">
-    <button className="text-gray-700" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-      Search
-    </button>
-    <div className="relative">
-      <FontAwesomeIcon icon={faShoppingCart} className="text-gray-700 cursor-pointer" onClick={handleToggleCart} />
-      {isOpen && (
-        <>
-          <div className="fixed inset-0 z-40 bg-black bg-opacity-50"></div>
-          <div className="fixed right-0 top-0 w-full md:w-2/6 h-screen shadow-3xl bg-white z-50 transition duration-300 ease-in-out transform translate-x-full lg:translate-x-0">
-            <div className="p-4 h-full flex flex-col">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold pt-4 text-gray-800">Cart</h2>
-                <button type="button" onClick={handleToggleCart} className="text-black pt-4">
-                  <FontAwesomeIcon icon={faTimes} className="text-2xl cursor-pointer" />
-                </button>
+  return (  
+    <>
+    <Upperheader />
+    <Uppertolowerheader />
+    <div className="relative bg-white p-4 shadow-lg">
+      <div className="flex items-center justify-between">
+        {/* Left side: Navigation Links */}
+        <div className="flex items-center space-x-4 ">
+          <div className="text-black cursor-pointer lg:hidden" onClick={toggleDrawer}>
+            &#9776; Menu
+          </div>
+          <div className="hidden lg:flex space-x-4">
+            <Link to="/" className="text-black text-sm hover:text-gray-500">Home</Link>
+             <Link to="/about" className="text-black text-sm hover:text-gray-500">About Us</Link>
+             <Link to="/contact" className="text-black text-sm hover:text-gray-500">Contact Us</Link>
+             <Link to="/products" className="text-black text-sm hover:text-gray-500">New Arrivals</Link>
+             <Link to="/products" className="text-black text-sm hover:text-gray-500">All Products</Link>
+          </div>
+        </div>
+        
+        {/* Center: Logo */}
+       
+       {/* Center: Logo */}
+       <div className="text-black text-1xl lg:text-3xl lg:absolute lg:inset-x-0 lg:left-0 lg:right-0 lg:text-center">
+          <Link to="/">
+            W A R D R O B E
+          </Link>
+        </div>
+        
+        {/* Right side: Cart and Search */}
+        <div className="flex items-center space-x-4">
+          {/* Cart Icon */}
+          <div className="text-black cursor-pointer" onClick={toggleCart}>
+            &#128722; 
+          </div>
+          
+          {/* Search Icon */}
+          <div className="text-black cursor-pointer" onClick={toggleSearch}>
+            &#128269; 
+          </div>
+        </div>
+      </div>
+
+      {/* Drawer */}
+      {isDrawerOpen && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50 lg:hidden">
+          <div className="absolute top-0 left-0 h-full w-4/5 sm:w-80 lg:w-60 bg-white shadow-lg">
+            <div className="p-4">
+              {/* Drawer Content with Links */}
+              <div className="flex flex-col space-y-4">
+                <Link to="/" className="text-black hover:text-gray-500" onClick={toggleDrawer}>Home</Link>
+                <Link to="/about" className="text-black hover:text-gray-500" onClick={toggleDrawer}>About</Link>
+                <Link to="/contact" className="text-black hover:text-gray-500" onClick={toggleDrawer}>Contact</Link>
+                <Link to="/products" className="text-black hover:text-gray-500" onClick={toggleDrawer}>All Products</Link>
               </div>
-              <ul className="overflow-y-auto flex-grow">
-                {/* Iterate over cart items */}
-                {cartItems.map((cartItem) => (
-                  <li key={cartItem.id} className="flex justify-between items-center py-4">
-                    <div className="flex items-center">
-                      <img src={cartItem.image} alt={cartItem.name} className="w-16 h-16 rounded-full mr-4" />
-                      <div>
-                        <h3 className="text-lg font-semibold mb-3">{cartItem.name}</h3>
-                        <p className="text-gray-500 mb-3">{cartItem.description}</p>
-                        <p className="text-gray-700 font-bold mb-3">${cartItem.price}</p>
-                        <hr />
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-4">
-                <button className="bg-amber-50 shadow-md border border-black text-black px-6 py-2 mb-4 w-full">Checkout</button>
-              </div>
+              <button className="text-gray-800 mt-4" onClick={toggleDrawer}>Close</button>
             </div>
           </div>
-        </>
+        </div>
+      )}
+       {/* Cart */}
+     
+      {/* Cart */}
+      {isCartOpen && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
+          <div className="absolute top-0 right-0 h-full w-4/5 sm:w-80 lg:w-60 bg-white shadow-lg rounded-lg">
+            <div className="p-4 flex flex-col h-full">
+              <h2 className="text-lg font-semibold">Shopping Cart</h2>
+              <div className="overflow-y-auto flex-1">
+                {items.map(item => (
+                  <div key={item.id} className="flex items-center space-x-4 mt-4">
+                    <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded" />
+                    <div className="flex-1">
+                      <h3 className="text-sm font-medium">{item.title}</h3>
+                      <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                      <div className="flex items-center mt-1">
+                        <button onClick={() => decreaseQuantity(item.id)} className="text-gray-500 hover:text-gray-700 px-2">
+                          -
+                        </button>
+                        <span className="px-2">{item.quantity}</span>
+                        <button onClick={() => increaseQuantity(item.id)} className="text-gray-500 hover:text-gray-700 px-2">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <button onClick={() => removeItem(item.id)} className="text-gray-500 hover:text-gray-700">
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <p className="text-xl font-semibold">Total:</p>
+                <p className="text-xl">${totalPrice.toFixed(2)}</p>
+              </div>
+              <button className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow-sm">Proceed to Checkout</button>
+              <button className="text-gray-800 mt-4" onClick={toggleCart}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      {/* Search */}
+      {isSearchOpen && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
+          <div className="absolute top-0 right-0 h-full w-4/5 sm:w-80 lg:w-60 bg-white shadow-lg">
+            <div className="p-4">
+              Search Content
+              <button className="text-gray-800" onClick={toggleSearch}>Close</button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
-  </div>
-</header>
-  </>
+   </>
   );
 };
 

@@ -36,10 +36,11 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
   const handleQuickViewToggle = () => {
     setIsQuickViewOpen(!isQuickViewOpen);
   };
+  
   return (
     <>
-     
     <div className="max-w overflow-hidden shadow-lg bg-white">
+      
       <div className="relative">
         <img className="w-full h-64 object-cover" src={image} alt={name} />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-300">
@@ -48,6 +49,8 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
           </button>
         </div>
       </div>
+
+      <Link to={`/products/${id}`}>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-gray-800 truncate">{name}</div>
         <p className="text-gray-700 text-base line-clamp-2">{description}</p>
@@ -60,8 +63,9 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
           Add to Cart
         </button>
       </div>
+      </Link>
     </div>
-  
+
     {/* Quick View Modal */}
     {isQuickViewOpen && (
        <QuickViewWidget

@@ -80,10 +80,29 @@ const App = () => {
       }
     />
     <Route path="/checkouts" element={<Checkout />} />
-    <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+    <Route path="/privacypolicy" element={
+      <>
+       <Header />
+       <PrivacyPolicy />
+       <Footer />
+     </>
+    } />
     <Route path="/termsofservice" element={<Termsofservice />} />
-    <Route path="/faq" element={<FAQ />} />
-    <Route path="/shippingpolicy" element={<ShippingPolicy />} />
+    <Route path="/faq" element={
+       <>
+       <Header />
+       <FAQ />
+       <Footer />
+     </>
+    } />
+    <Route path="/shippingpolicy" element={
+      <>
+       <Header />
+       <ShippingPolicy />
+       <Footer />
+     </>
+      
+    } />
     <Route path="*" element={<NotFound />} />
   </Routes>
 </Router>;

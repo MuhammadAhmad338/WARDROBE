@@ -51,20 +51,16 @@ const Home = () => {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [fadeClass, setFadeClass] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFadeClass(''); // Reset the fade class
+      // Reset the fade class
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
 
-  useEffect(() => {
-    setFadeClass('fade-in'); // Apply the fade class when image changes
-  }, [currentImageIndex]);
 
   return (
     <div>
@@ -98,7 +94,7 @@ const Home = () => {
      
     </div>
     <ImageOverlay
-        imageUrl="https://via.placeholder.com/800x600"
+        imageUrl="src/assets/fashion-retro-people-pigtail-african.jpg"
         overlayContent={
           <div className="bg-black bg-opacity-75 p-6 rounded text-center">
             <p className="text-1xl mb-2">TRENDING CLOTHING</p>

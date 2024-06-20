@@ -13,8 +13,8 @@ const CheckoutPage = () => {
     city: '',
     postalCode: '',
     phone: '',
-    paymentMethod: '',
-});
+    paymentMethod: ''
+  });
 
 const handleChange = (e: any) => {
     const { id, value, type, checked } = e.target;

@@ -1,6 +1,6 @@
 const FAQPage = () => {
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h1>
 
       <div className="max-w-lg mx-auto">
