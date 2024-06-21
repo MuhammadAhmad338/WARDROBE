@@ -17,10 +17,12 @@ import Cart from './Components/Cart/Cart';
 import OrderCompleted from './Components/Order/orderCompleted';
 
 const App = () => {
+
   return (
     <>
     <Router>
   <Routes>
+ 
     <Route
       path="/"
       element={
@@ -51,6 +53,7 @@ const App = () => {
         </>
       }
     />
+    
     <Route
       path="/about"
       element={
