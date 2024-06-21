@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, description, price, ima
         <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700">
           ${price.toFixed(2)}
         </span>
-        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline transition duration-300">
+        <button className="bg-black hover:bg-white text-white hover:text-black hover:border hover:border-black  font-bold py-2 px-4 focus:outline-none focus:shadow-outline transition duration-300">
           Add to Cart
         </button>
       </div>

@@ -5,7 +5,7 @@ import Upperheader from './UpperHeaders/upperheader';
 import Uppertolowerheader from './UpperHeaders/uppertolowerheader';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faCartShopping} from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
 
@@ -84,6 +84,7 @@ const Header = () => {
         <Upperheader/>
         <Uppertolowerheader/>
 
+
         {/* Left side: Navigation Links */}
         <header className="relative flex justify-between items-center px-6 py-6 bg-white shadow-md">
           {/* Left: Navigation Links */}
@@ -98,7 +99,9 @@ const Header = () => {
           {/* Center: Logo */}
           <div
               className="absolute left-1/2 transform -translate-x-1/2 text-xl sm:text-2xl lg:text-3xl text-black">
-            W A R D R O B E
+         <Link to="/">
+         W A R D R O B E
+         </Link>
           </div>
           <div className="custom-lg:hidden text-black cursor-pointer" onClick={toggleDrawer}>
             <FontAwesomeIcon icon={faBars} />
@@ -123,9 +126,10 @@ const Header = () => {
               </div>
           )}
 
-          <div onClick={toggleCart} className="text-black text-sm hover:text-gray-500">Cart</div>
+          <div onClick={toggleCart} className="text-black text-lg hover:text-gray-500"> <FontAwesomeIcon icon={faCartShopping} />    </div>
         </header>
-        
+
+
         {/* Cart */}
         {isCartOpen && (
   <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
@@ -174,15 +178,10 @@ const Header = () => {
           View Cart
        </button>
        </Link>
-        
-
-        
       </div>
     </div>
   </div>
 )}
-
-
 
         {/* Search */}
         {isSearchOpen && (

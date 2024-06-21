@@ -23,12 +23,12 @@ const QuickViewWidget: React.FC<QuickViewWidgetProps> = ({ name, image, descript
             ✕
           </button>
           <div>
-            <h2 className="text-3xl font-semibold mb-4 text-gray-800">{name}</h2>
-            <p className="text-gray-700 text-lg mb-8">{description}</p>
+            <h2 className="text-2xl mb-4 text-gray-800">{name}</h2>
+            <p className="text-gray-700 text-sm mb-8">{description}</p>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-2xl font-semibold text-gray-800">${price.toFixed(2)}</span>
-            <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline transition duration-300">
+            <span className="text-1xl text-gray-800">$ {price.toFixed(2)}</span>
+            <button className="bg-black text-white hover:bg-white hover:border hover:border-black hover:text-black font-bold py-2 px-4 focus:outline-none focus:shadow-outline transition duration-300">
               Add to Cart
             </button>
           </div>

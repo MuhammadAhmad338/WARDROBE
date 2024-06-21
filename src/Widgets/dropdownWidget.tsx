@@ -9,7 +9,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mt-6">
+    <div className="mt-4">
       <div 
         className="text-sm font-medium cursor-pointer flex justify-between items-center" 
         onClick={() => setIsOpen(!isOpen)}

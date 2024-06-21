@@ -24,19 +24,18 @@ const ProductCard = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
+    <div className="bg-white shadow-lg rounded-lg  overflow-hidden w-full flex flex-col  lg:flex-row">
       {/* Image on the left */}
-      <div className="relative w-2/3">
+      <div className="relative w-full">
         <img
           src={images[currentImage]} // Larger image size
           alt="Green Swim Shorts"
-          className="w-full h-auto object-cover rounded-lg"
-          style={{ minHeight: "400px" }} // Ensures minimum height for consistency
+          className="w-[840px] h-[1000px] object-cover"
         />
         <div
           onClick={() => navigateImage("prev")}
           className="absolute top-1/2 left-4 transform 
-  -translate-y-1/2 bg-black rounded-full p-2 cursor-pointer shadow-lg"
+-translate-y-1/2 bg-black rounded-full p-2 cursor-pointer shadow-lg"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,8 +54,7 @@ const ProductCard = () => {
         </div>
         <div
           onClick={() => navigateImage("next")}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black
-   rounded-full p-2 cursor-pointer shadow-lg"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black rounded-full p-2 cursor-pointer shadow-lg"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,10 +71,33 @@ const ProductCard = () => {
             />
           </svg>
         </div>
+
+        <div className="flex mb-4 lg:items-center">
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Thumbnail 1"
+            className="w-44 h-44  object-cover cursor-pointer"
+          />
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Thumbnail 2"
+            className="w-44 h-44  object-cover cursor-pointer"
+          />
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Thumbnail 3"
+            className="w-44 h-44 object-cover cursor-pointer"
+          />
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Thumbnail 4"
+            className="w-44 h-44  object-cover cursor-pointer"
+          />
+        </div>
       </div>
 
       {/* Product details on the right */}
-      <div className="w-2/3 p-4">
+      <div className="w-full p-12">
         <h1 className="text-2xl font-bold mb-2">
           THRST Classic Hue Swim Shorts
         </h1>
