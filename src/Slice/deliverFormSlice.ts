@@ -57,7 +57,7 @@ const formDataSlice = createSlice({
     setFormData: (state, action: PayloadAction<Partial<FormData>>) => {
       state.formData = { ...state.formData, ...action.payload };
     },
-    resetFormState: (state) => initialState,
+    resetFormState: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -65,11 +65,11 @@ const formDataSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(submitOrder.fulfilled, (state, action) => {
+      .addCase(submitOrder.fulfilled, (state) => {
         state.loading = false;
         state.formData = initialState.formData;
       })
-      .addCase(submitOrder.rejected, (state, action) => {
+      .addCase(submitOrder.rejected, (state) => {
         state.loading = false;
         state.error =  'Failed to submit order';
       });

@@ -10,7 +10,7 @@ import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  const [isVisible, setIsVisible] = useState(true);
+  const [, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -127,7 +127,7 @@ const Header = () => {
       {/* Left side: Navigation Links */}
       <header className="relative flex justify-between items-center px-6 py-6 bg-white shadow-md">
         {/* Left: Navigation Links */}
-        <div className="flex space-x-4 custom-lg:flex hidden">
+        <div className=" space-x-4 custom-lg:flex ">
           <Link to="/" className="text-black text-sm hover:text-gray-500">
             Home
           </Link>

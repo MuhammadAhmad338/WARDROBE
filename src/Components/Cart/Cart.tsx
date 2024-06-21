@@ -21,14 +21,6 @@ const Cart = () => {
     },
   ];
 
-  // Function to calculate total price
-  const calculateTotal = () => {
-    return products.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
   return (
     <div className="flex flex-col mt-8 h-full">
       <h1 className="flex justify-center text-md md:text-lg lg:text-xlg mb-6 text-gray-900 lg:text-xl">
@@ -43,7 +35,7 @@ const Cart = () => {
         <p>Total</p>
       </div>
 
-     {products.map(product => (
+     {products.map(_ => (
          <div className="flex flex-row mb-8 p-3 md:border-t md:border-black md:m-4">
          <img
            className="w-32 h-32 ml-2 md:w-60"
