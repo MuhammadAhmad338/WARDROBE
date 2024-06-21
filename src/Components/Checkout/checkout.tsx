@@ -2,9 +2,23 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { submitOrder } from "../../Slice/deliverFormSlice";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCompleteOrder = async () => {
+    try {
+      setIsLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      navigate('/orderSubmitted');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -164,13 +178,17 @@ const handleSubmit = async (e: any) => {
             </div>
 
             <div className="mt-6">
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                    Complete Order
-                </button>
-            </div>
+      <button
+        type="submit"
+        className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline ${
+          isLoading ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+        onClick={handleCompleteOrder}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Completing Order...' : 'Complete Order'}
+      </button>
+    </div>
         </form>
         </div>
 
@@ -196,7 +214,20 @@ const handleSubmit = async (e: any) => {
 
         </div>
       </div>
+      {/* Loading Indicator */}
+      {isLoading && (
+  <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
+    <div className="bg-white rounded-lg p-6 flex items-center space-x-4 shadow-lg">
+      <svg className="animate-spin h-8 w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM20 12c0-3.042-1.135-5.824-3-7.938l-3 2.647A7.962 7.962 0 0120 12h4zm-6 7.291A7.962 7.962 0 0120 12h-4c0 2.208-.895 4.208-2.344 5.656l3 2.647zM8 4.709A7.962 7.962 0 014 12h4c0-2.208.895-4.208 2.344-5.656l-3-2.647z"></path>
+      </svg>
+      <p className="text-gray-800">Completing Order, please wait...</p>
     </div>
+  </div>
+)}
+    </div>
+    
   );
 };
 

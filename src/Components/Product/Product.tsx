@@ -76,22 +76,22 @@ const ProductCard = () => {
           <img
             src="https://via.placeholder.com/100"
             alt="Thumbnail 1"
-            className="w-44 h-44  object-cover cursor-pointer"
+                     className="w-[100px] h-[100px] sm:w-20 object-cover cursor-pointer"
           />
           <img
             src="https://via.placeholder.com/100"
             alt="Thumbnail 2"
-            className="w-44 h-44  object-cover cursor-pointer"
+                       className="w-[100px] h-[100px] sm:w-20 object-cover cursor-pointer"
           />
           <img
             src="https://via.placeholder.com/100"
             alt="Thumbnail 3"
-            className="w-44 h-44 object-cover cursor-pointer"
+           className="w-[100px] h-[100px] sm:w-20 object-cover cursor-pointer"
           />
           <img
             src="https://via.placeholder.com/100"
             alt="Thumbnail 4"
-            className="w-44 h-44  object-cover cursor-pointer"
+             className="w-[100px] h-[100px] sm:w-20 object-cover cursor-pointer"
           />
         </div>
       </div>

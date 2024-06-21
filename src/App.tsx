@@ -14,6 +14,7 @@ import FAQ from './Components/FAQ/FAQ';
 import StockItemsList from './Components/StockItemList/stockItemList';
 import Checkout from './Components/Checkout/checkout';
 import Cart from './Components/Cart/Cart';
+import OrderCompleted from './Components/Order/orderCompleted';
 
 const App = () => {
   return (
@@ -80,6 +81,16 @@ const App = () => {
         </>
       }
     />
+     <Route
+      path="/orderSubmitted"
+      element={
+        <>
+          <Header />
+          <OrderCompleted />
+          <Footer />
+        </>
+      }
+    />
     <Route
       path="/products/:id"
       element={
@@ -98,7 +109,14 @@ const App = () => {
        <Footer />
      </>
     } />
-    <Route path="/termsofservice" element={<Termsofservice />} />
+     <Route path="/termsofservice" element={
+      <>
+       <Header />
+       <Termsofservice />
+       <Footer />
+     </>
+    } />
+   
     <Route path="/faq" element={
        <>
        <Header />
