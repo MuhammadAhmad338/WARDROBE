@@ -39,7 +39,7 @@ export const submitOrder = createAsyncThunk(
   async (formData: FormData, thunkAPI) => {
     try {
       console.log(`form data: ${formData}`)
-      const response = await axios.post('http://localhost:3001/api', formData);
+      const response = await axios.post('https://wardrobewizard.onrender.com/api', formData);
        console.log('Form submission successful:', response.data);
       // Handle success (e.g., show confirmation, clear form)
       

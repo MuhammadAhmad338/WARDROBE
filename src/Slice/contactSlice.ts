@@ -13,7 +13,7 @@ interface FormData {
     async (formData: FormData, thunkAPI) => {
       try {
         console.log('Form data:', formData);
-        const response = await axios.post('http://localhost:3001/api/contact', formData);
+        const response = await axios.post('https://wardrobewizard.onrender.com/api/contact', formData);
         console.log('Form submission successful:', response.data);
         return response.data; // Assuming response.data contains any relevant server response
       } catch (error: any) {
