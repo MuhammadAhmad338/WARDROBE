@@ -1,8 +1,8 @@
+import Upperheader from "./UpperHeaders/upperheader";
+import Uppertolowerheader from "./UpperHeaders/uppertolowerheader";
 import { RootState } from "../../Store/store";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import Upperheader from "./UpperHeaders/upperheader";
-import Uppertolowerheader from "./UpperHeaders/uppertolowerheader";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -125,7 +125,16 @@ const Header = () => {
     <>
       <Upperheader />
       <Uppertolowerheader />
-           <header className="relative flex justify-between items-center px-4 sm:px-6 py-4 sm:py-6 bg-white shadow-md">
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    <header className="relative flex justify-between items-center px-4 sm:px-6 py-4 sm:py-6 bg-white shadow-md">
         {/* Left: Navigation Links */}
         <div className="hidden lg:flex space-x-4">
           <Link to="/" className="text-black text-sm hover:text-gray-500">
@@ -161,6 +170,9 @@ const Header = () => {
         </div>
       </header>
      
+
+
+
 
       {/* Drawer */}
       {isDrawerOpen && (

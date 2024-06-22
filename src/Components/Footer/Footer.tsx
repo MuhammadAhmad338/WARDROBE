@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white text-gray-800 py-8 shadow-lg">
+    <footer className="bg-black text-white py-8 shadow-lg mt-auto">
       <div className="container mx-auto flex flex-wrap justify-center items-center">
         <div className="w-full sm:w-1/2 md:w-1/4 mb-4 px-4">
           <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
